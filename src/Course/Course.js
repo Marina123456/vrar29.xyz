@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,12 +14,16 @@ const useStyles = makeStyles({
     maxWidth: 500,
    
   },
+  link: {
+    textDecoration: 'none'
+  }
 });
 
-export default function CardNews(props) {
+export default function Course(props) {
   const classes = useStyles();
 
   return (
+    <Link className={classes.link} to={`/${props.id}`}>
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -38,11 +43,14 @@ export default function CardNews(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
+      <Link className={classes.link} to={`/${props.id}`}>
         <Button size="small" color="primary">
           Перейти
         </Button>
+      </Link>
         
       </CardActions>
     </Card>
+    </Link>
   );
 }
