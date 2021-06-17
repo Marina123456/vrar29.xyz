@@ -2,11 +2,31 @@ export default {
     course:{
         courseList: [],
         selectedCourse: {
-            title: {renderer:''},
-            img: '',
+            title: {rendered:''},
+            acf: {img: ''},
+            id: null
         },
     },
     lesson:{
-      lessonList: [],
+      lessonList: [
+          {
+            id: null,  
+            title: '',
+            subsectionList: [
+                {
+                    id: null,
+                    title: '',
+                    content: ''
+                }
+            ],
+            taskList: [
+                {
+                    id: null,
+                    title: '',
+                    content: ''
+                }
+            ]
+          }
+      ],
     }
 };

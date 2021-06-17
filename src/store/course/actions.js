@@ -14,5 +14,12 @@ export function fetchCourseList() {
 }
 
 export function  selectCourse(id) {
-    return dispatch => { dispatch({ type: types.SELECT, id: id }); }
+    
+    return async function fetchselectedCourseThunk (dispatch, getState) {
+      const route  = `${host}/kurs/${id}?_fields=id,title,acf`;
+      let response = await fetch(route);
+          response = await response.json();
+
+      return dispatch({ type: types.SELECT, selectedCourse: response });
   }
+}

@@ -9,12 +9,13 @@ export default function reduce(state = {}, action = {}) {
                    });
         }
         return state;
-      case types.SELECT:
-        let selectedCourse={};
-            selectedCourse = state.courseList.find( elem => elem.id==action.id );
-        return Object.assign({}, state, {
-            selectedCourse: selectedCourse
-          });
+      case types.SELECT:       
+        if (action.selectedCourse) {
+          return Object.assign({}, state, {
+                  selectedCourse: action.selectedCourse
+                 });
+      }
+      return state;
       default:
         return state;
       }

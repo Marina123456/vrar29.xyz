@@ -23,7 +23,7 @@ function CourseList() {
     const dispatch = useDispatch();
     const course_list = useSelector(state=>state.course.courseList);
     useEffect(() => {
-        dispatch(fetchCourseList());
+     //   dispatch(fetchCourseList());
    
       }, []);
 
@@ -40,7 +40,7 @@ function CourseList() {
                   id={value.id}
                   />
             </Grid>);
-            console.log(value);
+           
 
         })}
            
