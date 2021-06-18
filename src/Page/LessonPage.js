@@ -13,19 +13,24 @@ function LessonPage(props) {
 
     let selectedLessonArr = lessonList.filter(item => item.id == idLesson );
     let selectedLesson = {};
-    if (selectedLessonArr.lenght > 0) selectedLesson = selectedLessonArr[0];
+    if (selectedLessonArr.length > 0) selectedLesson = selectedLessonArr[0];
     
     useEffect(() => {
         dispatch(fetchLessonList(idCourse));    
         dispatch(fetchSubsectionList(idLesson)); 
         dispatch(fetchTaskList(idLesson)); 
       }, []);
+      //(selectedLesson.title.rendered) ? selectedLesson.title.rendered : null <div dangerouslySetInnerHTML={{__html:selectedLesson.title.rendered }} />
     return (    
         <div>
-            Кнопки: Оглавление/Задания
-          <Typography align="center" component="h2" variant="h2">
-            {(selectedLesson.title.rendered) ? selectedLesson.title.rendered : null }
-          </Typography>
+          <a href={"\\"+idCourse}>К оглавлению</a>
+          
+          {console.log(selectedLesson)}
+          {(selectedLesson.title)? (<Lesson selectedLesson={selectedLesson} />) : (<p></p>) }
+          
+         
+            
+          
           
           
           

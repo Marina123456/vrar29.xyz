@@ -15,7 +15,7 @@ export function fetchLessonList(idCourse) {
 
 export function fetchSubsectionList(idLesson) {
     return async function fetchSubsectionThunk (dispatch, getState) {
-       const route  = `${host}/podrazdeli?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,content&filter[order]=ASC`;
+       const route  = `${host}/podrazdeli?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,acf&filter[order]=ASC`;
        let response = await fetch(route);
            response = await response.json();
  

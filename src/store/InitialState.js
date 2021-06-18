@@ -11,7 +11,7 @@ export default {
       lessonList: [
           {
             id: null,  
-            title: '',
+            title: {rendered: ''},
             subsectionList: [
                 {
                     id: null,
@@ -29,7 +29,7 @@ export default {
           }
       ],
       selectedLesson: {
-          title: {rendered: ''}
+          title: {rendered: ''},
           id: null
       }
     }
