@@ -94,7 +94,7 @@ export default function LessonList(props) {
                      return(
                        <span>
                        <a 
-                       href={props.idCourse+"\\"+value.id+"#id"+valueSub.id} 
+                       href={props.idCourse+"\\"+value.id} 
                        dangerouslySetInnerHTML={{ __html: valueSub.title.rendered }} />
                        <br />
                        </span>
