@@ -28,5 +28,9 @@ export default {
             ]
           }
       ],
+      selectedLesson: {
+          title: {rendered: ''}
+          id: null
+      }
     }
 };

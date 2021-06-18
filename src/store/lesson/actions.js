@@ -27,7 +27,7 @@ export function fetchSubsectionList(idLesson) {
  
    }
  }
-
+ 
  export function fetchTaskList(idLesson) {
     return async function fetchTaskThunk (dispatch, getState) {
        const route  = `${host}/zadaniya?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,content&filter[order]=ASC`;

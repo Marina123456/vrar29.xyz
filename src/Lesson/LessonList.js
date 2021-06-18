@@ -1,10 +1,6 @@
 import { useEffect }from 'react';
-
-
-
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLessonList, fetchSubsectionList, fetchTaskList } from '../store/lesson/actions';
-
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
@@ -35,14 +31,15 @@ const AccordionSummary = withStyles({
     backgroundColor: 'rgba(0, 0, 0, .03)',
     borderBottom: '1px solid rgba(0, 0, 0, .125)',
     marginBottom: -1,
-    minHeight: 56,
+    minHeight: 10,
     '&$expanded': {
-      minHeight: 56,
+      minHeight: 10,
     },
   },
   content: {
+    margin: '5px 0',
     '&$expanded': {
-      margin: '12px 0',
+      margin: '5px 0',
     },
   },
   expanded: {},
@@ -91,24 +88,31 @@ export default function LessonList(props) {
                 </AccordionSummary>
                 <AccordionDetails>
                  <Typography>
-                 <p>Теория</p>
+                 <span>Теория</span>
+                 <br />
                    {value.subsectionList.map( (valueSub) => {
                      return(
-                       <div>
-                       <a href="google.com">
-                       <div dangerouslySetInnerHTML={{ __html: valueSub.title.rendered }}/>
-                       </a><br/>
-                       </div>
+                       <span>
+                       <a 
+                       href={props.idCourse+"\\"+value.id} 
+                       dangerouslySetInnerHTML={{ __html: valueSub.title.rendered }} />
+                       <br />
+                       </span>
+
+                       
                      )
                    })}
-                  <p>Практика</p>
+                   
+                   <span>Практика</span>
+                   <br />
                   {value.taskList.map( (valueTask) => {
                      return(
-                       <div>
-                       <a href="google.com">
-                          <div dangerouslySetInnerHTML={{ __html: valueTask.title.rendered }}/>
-                       </a><br/>
-                       </div>
+                      <span>
+                        <a 
+                        href="google.com" 
+                        dangerouslySetInnerHTML={{ __html: valueTask.title.rendered }} />
+                        <br />
+                      </span>
                      )
                    })}
                   </Typography>

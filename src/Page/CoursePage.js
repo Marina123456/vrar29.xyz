@@ -1,8 +1,5 @@
-import Header from "../Header";
 import LessonList from '../Lesson/LessonList';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLessonList } from '../store/lesson/actions';
-
 import { selectCourse } from '../store/course/actions';
 import Typography  from '@material-ui/core/Typography';
 import { useEffect }from 'react';
@@ -10,7 +7,6 @@ import { useEffect }from 'react';
 function CoursePage(props) {
     const id=props.match.params.id;
     const dispatch = useDispatch();
-    const courseList = useSelector(state=>state.course.courseList);
     const selectedCourse = useSelector(state=>state.course.selectedCourse);
     useEffect(() => {
         dispatch(selectCourse(id));    
@@ -19,7 +15,7 @@ function CoursePage(props) {
     return (    
         <div>
           <Typography align="center" component="h2" variant="h2">
-            {selectedCourse.title.rendered}
+            { (selectedCourse) ? selectedCourse.title.rendered : null}
           </Typography>
           <Typography  component="p" variant="h4">
             Оглавление
