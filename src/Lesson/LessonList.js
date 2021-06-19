@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect }from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLessonList, fetchSubsectionList, fetchTaskList } from '../store/lesson/actions';
@@ -93,10 +94,11 @@ export default function LessonList(props) {
                    {value.subsectionList.map( (valueSub) => {
                      return(
                        <span>
-                       <a 
-                       href={props.idCourse+"\\"+value.id} 
-                       dangerouslySetInnerHTML={{ __html: valueSub.title.rendered }} />
-                       <br />
+                         <Link  
+                            to={`/${props.idCourse}/lesson/${value.id}/${valueSub.id}`} 
+                            dangerouslySetInnerHTML={{ __html: valueSub.title.rendered }}
+                         />
+                        <br />
                        </span>
 
                        
@@ -108,9 +110,10 @@ export default function LessonList(props) {
                   {value.taskList.map( (valueTask) => {
                      return(
                       <span>
-                        <a 
-                        href="google.com" 
-                        dangerouslySetInnerHTML={{ __html: valueTask.title.rendered }} />
+                         <Link  
+                            to={`/${props.idCourse}/task/${value.id}/${valueTask.id}`} 
+                            dangerouslySetInnerHTML={{ __html: valueTask.title.rendered }}
+                         />
                         <br />
                       </span>
                      )

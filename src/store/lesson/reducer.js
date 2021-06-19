@@ -17,6 +17,15 @@ export default function reduce(state = {}, action = {}) {
                    });
         }
         return state;
+        case types.FETCH_LESSON:
+          if (action.selectedLesson) {
+            
+            return Object.assign({}, state, {
+                     selectedLesson: action.selectedLesson
+  
+                     });
+          }
+          return state;
       case types.FETCH_SUBSECTION:
           if (action.subsectionList) {
               console.log(action.idLesson);
@@ -34,7 +43,7 @@ export default function reduce(state = {}, action = {}) {
                      });
           }
           return state;
-          case types.FETCH_TASK:
+        case types.FETCH_TASK:
              if (action.taskList) {
               
               let newLessonList = [];
@@ -50,7 +59,24 @@ export default function reduce(state = {}, action = {}) {
                       lessonList: newLessonList
                      });
           }
-          return state;         
+          return state;
+          case types.SELECT:
+             if (action.idLesson) {
+               console.log(state.lessonList);
+               console.log(state.lessonList.findIndex(x => x.id === action.idLesson));
+              return Object.assign({}, state, {
+                     indexSelectedLesson: state.lessonList.findIndex(x => x.id === action.idLesson)
+              
+                     });
+          }
+          return state;
+          case types.SELECT_ID:
+            if (action.idLesson) {
+             return Object.assign({}, state, {
+                    selectedID: action.idLesson
+                    });
+         }
+         return state;          
       default:
         return state;
       }

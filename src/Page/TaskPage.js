@@ -1,6 +1,6 @@
-import Lesson from '../Lesson/Lesson';
+import Task from '../Lesson/Task';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLessonList, fetchSubsectionList, fetchTaskList, fetchAndSelect} from '../store/lesson/actions';
+import {fetchAndSelect} from '../store/lesson/actions';
 import Container  from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography  from '@material-ui/core/Typography';
@@ -21,7 +21,7 @@ function LessonPage(props) {
     const classes = useStyles();
     const idLesson=+props.match.params.idLesson;
     const idCourse=+props.match.params.idCourse;
-    const idSubsection = +props.match.params.idSubsection;
+    const idTask = +props.match.params.idTask;
     const dispatch = useDispatch();
     const lessonList = useSelector(state=>state.lesson.lessonList);
     const indexSelectedLesson = useSelector(state=>state.lesson.indexSelectedLesson);
@@ -38,17 +38,17 @@ function LessonPage(props) {
           <a href={"\\"+idCourse}>
             <Button variant="contained">К оглавлению</Button>
           </a>
-          <a href={"/"+idCourse+"/task/"+idLesson}>
+          <a href={"/"+idCourse+"/lesson/"+idLesson}>
           <Button variant="contained" color="secondary">
-            Задания
+            Теория
           </Button>
           </a>
           </div>
          
           {  (indexSelectedLesson!=null && indexSelectedLesson!=-1) ? 
-             (<Lesson 
+             (<Task 
               selectedLesson={lessonList[indexSelectedLesson]} 
-              idSubsection={idSubsection}/>): (<p></p>)    
+              idTask={idTask}/>): (<p></p>)    
              
           }
           
