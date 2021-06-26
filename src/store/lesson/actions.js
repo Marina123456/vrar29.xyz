@@ -4,7 +4,7 @@ const host ='https://vrar29.xyz/wp/wp-json/wp/v2';
 
 export function fetchLessonList(idCourse) {
    return async function fetchLessonListThunk (dispatch, getState) {
-      const route  = `${host}/zanyatie?filter[meta_key]=kurs&filter[meta_value]=${idCourse}&_fields=id,title&filter[order]=ASC`;
+      const route  = `${host}/zanyatie?filter[meta_key]=kurs&filter[meta_value]=${idCourse}&_fields=id,title&filter[order]=ASC&per_page=100`;
       let response = await fetch(route);
           response = await response.json();
 
@@ -14,7 +14,7 @@ export function fetchLessonList(idCourse) {
 }
 export function fetchLesson(idLesson) {
     return async function fetchLessonListThunk (dispatch, getState) {
-       const route  = `${host}/zanyatie/${idLesson}?_fields=id,title`;
+       const route  = `${host}/zanyatie/${idLesson}?_fields=id,title&per_page=100`;
        let response = await fetch(route);
            response = await response.json();
  
@@ -24,7 +24,7 @@ export function fetchLesson(idLesson) {
  }
 export function fetchSubsectionList(idLesson) {
     return async function fetchSubsectionThunk (dispatch, getState) {
-       const route  = `${host}/podrazdeli?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,acf&filter[order]=ASC`;
+       const route  = `${host}/podrazdeli?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,acf&filter[order]=ASC&per_page=100`;
        let response = await fetch(route);
            response = await response.json();
        
@@ -39,7 +39,7 @@ export function fetchSubsectionList(idLesson) {
  
  export function fetchTaskList(idLesson) {
     return async function fetchTaskThunk (dispatch, getState) {
-       const route  = `${host}/zadaniya?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,acf&filter[order]=ASC`;
+       const route  = `${host}/zadaniya?filter[meta_key]=zanyatie&filter[meta_value]=${idLesson}&_fields=id,title,acf&filter[order]=ASC&per_page=100`;
        let response = await fetch(route);
            response = await response.json();
  
